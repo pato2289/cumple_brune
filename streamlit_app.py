@@ -29,13 +29,13 @@ if submit_button and nombre != '' and apellido != '' and telefono != '':
         "Telefono": telefono
     }])
     update_df = pd.concat([existing_data, agregar_asistente], ignore_index=True)
-
-    # Update Google Sheets with the new vendor data
-    conn.update(worksheet="Hoja1", data=update_df)
-
     left_co, cent_co,last_co = st.columns((1, 2, 1))
     with cent_co:
         st.success('Gracias por venir al cumple!')
         st.image('./assets/gifkitty.gif')
+
+    # Update Google Sheets with the new vendor data
+    conn.update(worksheet="Hoja1", data=update_df)
+
 elif submit_button and nombre == '' and apellido == '' and telefono == '':
     st.error("Te olvidaste de ingresar alguno de los datos")
